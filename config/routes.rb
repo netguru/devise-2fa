@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources 'puppies', :only => 'index'
 
+  devise_scope :user do
+    get '/users/two_factor/confirm' => 'users/registrations#confirm_two_factor',
+      as: :confirm_two_factor
+
+    put '/users/two_factor' => 'users/registrations#confirm_two_factor_update',
+      as: :confirm_two_factor_update
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,12 @@
+<%= google_authenticator_qrcode(resource) %>
+
+<h2>Hi, scan Google Authenticator QR code and enter result code below to confirm your two factor auth!</h2>
+
+<%= form_tag(confirm_two_factor_update_path, :method => :put) do %>
+  <%= devise_error_messages! %>
+
+  <%= text_field_tag :code %>
+  <%= submit_tag "Log in!" %>
+<% end %>
+
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
