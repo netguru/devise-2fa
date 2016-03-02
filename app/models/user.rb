@@ -6,6 +6,15 @@ class User < ActiveRecord::Base
 
   has_one_time_password(encrypted: true)
 
+  def send_two_factor_authentication_code
+    return unless phone_number.present?
+    Twilio::REST::Client.new.messages.create(
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to: phone_number,
+      body: "Code is #{otp_code}"
+    )
+  end
+
   def need_two_factor_authentication?(request)
     two_factor_enabled? && !unconfirmed_two_factor?
   end

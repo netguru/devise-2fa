@@ -1,6 +1,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   def confirm_two_factor
     self.resource = current_user
+
+    current_user.send_two_factor_authentication_code
+  rescue Twilio::REST::RequestError
+    flash[:alert] = 'Your phone number is invalid and we couldn\'t send you SMS code'
   end
 
   def confirm_two_factor_update
