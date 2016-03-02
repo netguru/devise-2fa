@@ -5,6 +5,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def confirm_two_factor_update
     self.resource = current_user
+
+    if current_user.confirm_two_factor!(params[:code])
+      redirect_to root_path
+    else
+      flash[:alert] = 'Code is invalid!'
+      render 'confirm_two_factor'
+    end
   end
 
   protected
