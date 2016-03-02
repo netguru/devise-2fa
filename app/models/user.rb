@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
     two_factor_enabled? && !unconfirmed_two_factor?
   end
 
+  def confirm_two_factor!(code)
+    update_attributes(unconfirmed_two_factor: false) if authenticate_otp(code)
+  end
+
   private
 
   def valid_two_factor_confirmation
