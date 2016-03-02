@@ -3,4 +3,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one_time_password(encrypted: true)
+
+  def need_two_factor_authentication?(request)
+    two_factor_enabled? && !unconfirmed_two_factor?
+  end
 end
