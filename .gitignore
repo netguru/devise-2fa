@@ -18,3 +18,5 @@
 
 # Ignore env.yml and real credentials
 /config/env.yml
+
+/config/application.yml
