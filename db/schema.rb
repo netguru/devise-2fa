@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302073216) do
+ActiveRecord::Schema.define(version: 20160302082724) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                         default: "", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160302073216) do
     t.string   "encrypted_otp_secret_key"
     t.string   "encrypted_otp_secret_key_iv"
     t.string   "encrypted_otp_secret_key_salt"
-    t.boolean  "enbaled_two_factor"
+    t.boolean  "two_factor_enabled"
     t.boolean  "unconfirmed_two_factor"
     t.string   "phone_number"
   end

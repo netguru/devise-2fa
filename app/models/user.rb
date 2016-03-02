@@ -35,6 +35,6 @@ class User < ActiveRecord::Base
   end
 
   def phone_changed_with_two_factor
-    two_factor_enabled? && phone_changed?
+    two_factor_enabled? && phone_number_changed?
   end
 end
