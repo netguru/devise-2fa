@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'figaro'
 gem 'devise'
+gem 'twilio-ruby', '~> 4.11.1'
 gem 'two_factor_authentication'
 
 group :development, :test do
