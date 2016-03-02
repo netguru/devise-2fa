@@ -29,7 +29,9 @@
         <% if defined?(current_user) %>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li class="navbar-text">Hello <%= current_user.email %></li>
+              <li>
+                <%= link_to "Hello #{current_user.email}", edit_user_registration_path %>
+              </li>
               <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "Sign up", new_user_registration_path %></li>
