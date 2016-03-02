@@ -19,4 +19,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :phone_number
     )
   end
+
+  def after_update_path_for(resource)
+    return root_path unless resource.unconfirmed_two_factor?
+    confirm_two_factor_path
+  end
 end
