@@ -1,0 +1,10 @@
+<h1>Hello <%= @user.email  %> </h1>
+
+<%= form_for @user do |f| %>
+ <div
+   <%= f.label :avatar_url, 'Upload Your Avatar:' %>
+   <%= f.filepicker_field :avatar_url, dragdrop: true %>
+ </div>
+ <%= f.submit %>
+
+<% end %>
